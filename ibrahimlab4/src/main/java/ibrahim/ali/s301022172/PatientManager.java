@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class PatientManager extends SQLiteOpenHelper {
     //database name and version
     private static final String DATABASE_NAME = "PatientDB";
@@ -90,6 +93,24 @@ public class PatientManager extends SQLiteOpenHelper {
         }
         db.close();
         return patient;
+    }
+
+    public ArrayList<Patient> getPatientsList() throws Exception{
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Patient> patientList = new ArrayList<>();
+        String query = "SELECT patientId, patientName, patientGender, patientDepartment FROM "+ tableName;
+        Cursor cursor = db.rawQuery(query,null);
+        while (cursor.moveToNext()){
+            Patient patient = new Patient();
+            patient.setPatientId(cursor.getInt(0));
+            patient.setPatientName(cursor.getString(1));
+            patient.setPatientGender(cursor.getInt(2));
+            patient.setPatientDepartment(cursor.getString(3));
+
+            patientList.add(patient);
+        }
+        cursor.close();
+        return  patientList;
     }
     //
     //

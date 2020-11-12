@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -79,12 +80,7 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
 
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-
-        Toast.makeText(IbrahimActivity.this,
-                parent.getItemAtPosition(pos).toString(), Toast.LENGTH_SHORT).show();
-    }
+    public void onItemSelected(AdapterView<?> parent, View view,int pos, long id) { }
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
@@ -121,8 +117,11 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
             Log.i("Error: ",exception.getMessage());
 
         }
+    }
 
-
+    public void showPatientsList(View view){
+        Intent intent = new Intent(this, AliShowListActivity.class);
+        startActivity(intent);
     }
 
     public void showPatient(View view)
@@ -137,18 +136,13 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
                 txtPatientGenderF.setChecked(true);
             }
             txtPatientDepartment.setSelection(getIndex(txtPatientDepartment, patient.getPatientDepartment()));
-
-
         }
         catch (Exception exception)
         {
             Toast.makeText(IbrahimActivity.this,
                     exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ",exception.getMessage());
-
         }
-
-
     }
 
     //private method of your class
@@ -158,7 +152,6 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
                 return i;
             }
         }
-
         return 0;
     }
     //
@@ -174,7 +167,6 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
             patientGender = 2;
         }
 
-
         try{
             ContentValues contentValues = new ContentValues();
             contentValues.put("patientId",patientId);
@@ -183,18 +175,13 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
             contentValues.put("patientDepartment",txtPatientDepartment.getSelectedItem().toString()); //check
             //edit the row
             boolean b= patientManager.editRow(patientId, "patientId", contentValues);
-
-
         }
         catch(Exception exception)
         {
             Toast.makeText(IbrahimActivity.this,
                     exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ",exception.getMessage());
-
         }
-
-
     }
 
     //If back btn pressed, display alert dialog

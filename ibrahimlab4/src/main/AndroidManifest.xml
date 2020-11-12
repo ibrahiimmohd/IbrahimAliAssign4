@@ -9,6 +9,7 @@
         android:roundIcon="@drawable/ic_hospital_building"
         android:supportsRtl="true"
         android:theme="@style/Theme.IbrahimLab4">
+        <activity android:name=".AliShowListActivity"></activity>
         <activity android:name=".IbrahimActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
