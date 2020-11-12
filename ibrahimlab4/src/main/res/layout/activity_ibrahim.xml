@@ -7,4 +7,149 @@
     android:background="@color/bgColorIbrahimActivity"
     tools:context=".IbrahimActivity">
 
+    <TextView
+        android:id="@+id/ibrahimIdTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="Id"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ibrahimNameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Name"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimGenderTV" />
+
+    <TextView
+        android:id="@+id/ibrahimGenderTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Gender"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimIdTV" />
+
+    <TextView
+        android:id="@+id/ibrahimGDepartmentTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Department"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimNameTV"
+        app:layout_constraintVertical_bias="0.058" />
+
+    <EditText
+        android:id="@+id/ibrahimIdInsert"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="4"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimIdTV"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/ibrahimGenderRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimGenderTV"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimIdInsert">
+
+        <RadioButton
+            android:id="@+id/ibrahimGenderM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:width="110dp"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/ibrahimGenderF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:width="110dp"
+            android:text="Female" />
+    </RadioGroup>
+
+
+    <EditText
+        android:id="@+id/ibrahimNameInsert"
+        android:layout_width="220dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/ibrahimGDepartmentTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimNameTV"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimGenderRadioGroup"
+        app:layout_constraintVertical_bias="0.563" />
+
+    <Spinner
+        android:id="@+id/ibrahimSpinnerInsert"
+        android:layout_width="220dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="60dp"
+        style="@android:style/Widget.Spinner"
+        android:prompt="@string/prompt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimGDepartmentTV"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimNameInsert" />
+
+    <Button
+        android:id="@+id/ibrahimBtnShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show"
+        android:onClick="showPatient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ibrahimBtnAdd"
+        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimGDepartmentTV"
+        app:layout_constraintVertical_bias="0.313" />
+
+    <Button
+        android:id="@+id/ibrahimBtnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:text="Add"
+        android:onClick="addPatient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ibrahimBtnEdit"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimGDepartmentTV"
+        app:layout_constraintVertical_bias="0.313" />
+
+    <Button
+        android:id="@+id/ibrahimBtnEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Edit"
+        android:onClick="editStudent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimGDepartmentTV"
+        app:layout_constraintVertical_bias="0.313" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,4 +5,12 @@
 -->
 <resources>
     <string name="app_name">IbrahimLab4</string>
+    <string name="prompt">Choose a Department</string>
+
+    <string-array name="deparments_array">
+        <item>Anesthesia</item>
+        <item>Clinical Nutrition</item>
+        <item>Medical Imaging</item>
+        <item>Laboratory Medicine</item>
+    </string-array>
 </resources>
