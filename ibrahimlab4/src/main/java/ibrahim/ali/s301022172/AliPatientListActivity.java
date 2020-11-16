@@ -2,21 +2,28 @@ package ibrahim.ali.s301022172;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.ViewGroup;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class AliShowListActivity extends AppCompatActivity {
-    ArrayList<Patient> patients;
+public class AliPatientListActivity extends AppCompatActivity {
+    ArrayList<Patients> patients;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ali_show_list);
+
+        getSupportActionBar().setTitle("Patients List");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
         PatientManager patientManager = new PatientManager(this);
 
         try {
@@ -25,7 +32,7 @@ public class AliShowListActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ibrahimLayout);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ibrahimShowPatientsLayout);
 
         for(int i=0; i< patients.size(); i++) {
             TextView id = new TextView(this);
@@ -51,11 +58,41 @@ public class AliShowListActivity extends AppCompatActivity {
             linearLayout.addView(gender);
 
             TextView deparment = new TextView(this);
-            deparment.setText("Department:         " + patients.get(i).getPatientDepartment());
+            deparment.setText("Department:          " + patients.get(i).getPatientDepartment());
             deparment.setTextSize(20);
             deparment.setGravity(Gravity.LEFT);
             deparment.setPadding(5,10,0,10);
             linearLayout.addView(deparment);
+
+            Button btnShowTests = new Button(this);
+            btnShowTests.setText("Show Test(s)");
+            btnShowTests.setOnClickListener(v -> {
+
+                Intent intent = new Intent(AliPatientListActivity.this,AliShowPatientsTestsListActivity.class);
+                //patients.get(i).getPatientId()
+                startActivity(intent);
+            });
+            linearLayout.addView(btnShowTests);
+
+            Button btnAddTests = new Button(this);
+            btnAddTests.setText("Add Test(s)");
+            btnAddTests.setOnClickListener(v -> {
+
+                Intent intent = new Intent(AliPatientListActivity.this,AliAddTestActivity.class);
+                //patients.get(i).getPatientId()
+                startActivity(intent);
+            });
+            linearLayout.addView(btnAddTests);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            //finish();
+            Intent intent = new Intent(AliPatientListActivity.this,IbrahimActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

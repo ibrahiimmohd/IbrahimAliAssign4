@@ -1,6 +1,6 @@
 package ibrahim.ali.s301022172;
 
-public class Patient {
+public class Patients {
     //private fields
     private int _patientId;
     private String _patientName;
@@ -8,10 +8,10 @@ public class Patient {
     private String _patientDepartment;
 
     //no argument constructor
-    public Patient() {}
+    public Patients() {}
 
     //three argument constructor
-    public Patient(int patientId, String patientName, int patientGender, String patientDepartment) {
+    public Patients(int patientId, String patientName, int patientGender, String patientDepartment) {
         this._patientId = patientId;
         this._patientName = patientName;
         this._patientGender = patientGender;

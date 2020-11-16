@@ -13,15 +13,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 public class IbrahimActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -30,11 +31,16 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
     private Spinner spinner, txtPatientDepartment;
     private RadioButton txtPatientGenderM, txtPatientGenderF;
     private Button btnAdd, btnShow, btnEdit;
-    private final static String TABLE_NAME = "Patients";
-    private int spinnerPosition;
+
+    private final static String TABLE_PATIENTS = "Patients";
     //sql string to create the table
-    private static final String tableCreatorString =
-            "CREATE TABLE "+ TABLE_NAME + " (patientId integer primary key, patientName text, patientGender boolean, patientDepartment text);";
+    private static final String tableCreatorStringPatients =
+            "CREATE TABLE "+ TABLE_PATIENTS + " (patientId integer primary key, patientName text, patientGender boolean, patientDepartment text);";
+
+    private final static String TABLE_TESTS = "Tests";
+    //sql string to create the table
+    private static final String tableCreatorStringTests =
+            "CREATE TABLE "+ TABLE_TESTS + " ( testId integer primary key AUTOINCREMENT, patientId integer, createdAt text, bloodPressure integer, respiratoryRate integer, bloodOxygenLevel integer, heartBeatRate integer, covid19 boolean, FOREIGN KEY (patientId) REFERENCES Patients(patientId));";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +74,7 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
         try {
             patientManager = new PatientManager(this);
             //create the table
-            patientManager.dbInitialize(TABLE_NAME, tableCreatorString);
+            patientManager.dbInitialize(TABLE_PATIENTS, tableCreatorStringPatients, TABLE_TESTS, tableCreatorStringTests);
         }
         catch(Exception exception)
         {
@@ -76,8 +82,6 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
                     exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ",exception.getMessage());
         }
-
-
     }
 
     public void onItemSelected(AdapterView<?> parent, View view,int pos, long id) { }
@@ -120,22 +124,22 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
     }
 
     public void showPatientsList(View view){
-        Intent intent = new Intent(this, AliShowListActivity.class);
+        Intent intent = new Intent(this, AliPatientListActivity.class);
         startActivity(intent);
     }
 
     public void showPatient(View view)
     {
         try {
-            Patient patient = patientManager.getPatientById(txtId.getText().toString(), "patientId");
-            txtPatientName.setText(patient.getPatientName());
-            if (patient.getPatientGender() == 1) {
+            Patients patients = patientManager.getPatientById(txtId.getText().toString(), "patientId");
+            txtPatientName.setText(patients.getPatientName());
+            if (patients.getPatientGender() == 1) {
                 txtPatientGenderM.setChecked(true);
             }
-            if (patient.getPatientGender() == 2) {
+            if (patients.getPatientGender() == 2) {
                 txtPatientGenderF.setChecked(true);
             }
-            txtPatientDepartment.setSelection(getIndex(txtPatientDepartment, patient.getPatientDepartment()));
+            txtPatientDepartment.setSelection(getIndex(txtPatientDepartment, patients.getPatientDepartment()));
         }
         catch (Exception exception)
         {

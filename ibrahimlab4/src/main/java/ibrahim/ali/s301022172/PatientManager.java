@@ -7,17 +7,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class PatientManager extends SQLiteOpenHelper {
     //database name and version
     private static final String DATABASE_NAME = "PatientDB";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 4;
     // table name and table creator string (SQL statement to create the table)
     // should be set from within main activity
-    private static String tableName;
-    private static String tableCreatorString;
-    //
+    private static String tableNameP;
+    private static String tableCreatorStringP;
+
+    private static String tableNameT;
+    private static String tableCreatorStringT;
+
     // no-argument constructor
     public PatientManager(Context context)
     {
@@ -29,7 +31,8 @@ public class PatientManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create the table
-        db.execSQL(tableCreatorString);
+        db.execSQL(tableCreatorStringP);
+        db.execSQL(tableCreatorStringT);
     }
     //
     // Called when the database needs to be upgraded.
@@ -39,7 +42,8 @@ public class PatientManager extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //drop table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + tableName);
+        db.execSQL("DROP TABLE IF EXISTS " + tableNameP);
+        db.execSQL("DROP TABLE IF EXISTS " + tableNameT);
         //recreate the table
         onCreate(db);
     }
@@ -52,10 +56,13 @@ public class PatientManager extends SQLiteOpenHelper {
     // tableName - a String variable which holds the table name
     // tableCreatorString - a String variable which holds the CREATE Table statement
 
-    public void dbInitialize(String tableName, String tableCreatorString)
+    public void dbInitialize(String TABLE_PATIENTS, String tableCreatorStringPatients, String TABLE_TESTS, String tableCreatorStringTests)
     {
-        this.tableName=tableName;
-        this.tableCreatorString=tableCreatorString;
+        this.tableNameP =TABLE_PATIENTS;
+        this.tableCreatorStringP =tableCreatorStringPatients;
+
+        this.tableNameT =TABLE_TESTS;
+        this.tableCreatorStringT =tableCreatorStringTests;
 
     }
     //
@@ -67,7 +74,7 @@ public class PatientManager extends SQLiteOpenHelper {
     public boolean addRow  (ContentValues values) throws Exception {
         SQLiteDatabase db = this.getWritableDatabase();
         // Insert the row
-        long nr= db.insert(tableName, null, values);
+        long nr= db.insert("Patients", null, values);
         db.close(); //close database connection
         return nr> -1;
     }
@@ -76,41 +83,70 @@ public class PatientManager extends SQLiteOpenHelper {
     // The following argument should be passed:
     // id - an Object which holds the primary key value
     // fieldName - the  name of the primary key field
-    public Patient getPatientById(Object id, String fieldName) throws Exception{
+    public Patients getPatientById(Object id, String fieldName) throws Exception{
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor =  db.rawQuery( "select * from " + tableName + " where "+ fieldName + "='"+String.valueOf(id)+"'", null );
-        Patient patient = new Patient(); //create a new Student object
+        Cursor cursor =  db.rawQuery( "select * from Patients where "+ fieldName + "='"+String.valueOf(id)+"'", null );
+        Patients patients = new Patients(); //create a new Student object
         if (cursor.moveToFirst()) { //if row exists
             cursor.moveToFirst(); //move to first row
             //initialize the instance variables of task object
-            patient.setPatientId(cursor.getInt(0));
-            patient.setPatientName(cursor.getString(1));
-            patient.setPatientGender(cursor.getInt(2));
-            patient.setPatientDepartment(cursor.getString(3));
+            patients.setPatientId(cursor.getInt(0));
+            patients.setPatientName(cursor.getString(1));
+            patients.setPatientGender(cursor.getInt(2));
+            patients.setPatientDepartment(cursor.getString(3));
             cursor.close();
         } else {
-            patient = null;
+            patients = null;
         }
         db.close();
-        return patient;
+        return patients;
     }
 
-    public ArrayList<Patient> getPatientsList() throws Exception{
+    public ArrayList<Patients> getPatientsList() throws Exception{
         SQLiteDatabase db = this.getReadableDatabase();
-        ArrayList<Patient> patientList = new ArrayList<>();
-        String query = "SELECT patientId, patientName, patientGender, patientDepartment FROM "+ tableName;
+        ArrayList<Patients> patientsList = new ArrayList<>();
+        String query = "SELECT patientId, patientName, patientGender, patientDepartment FROM Patients";
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()){
-            Patient patient = new Patient();
-            patient.setPatientId(cursor.getInt(0));
-            patient.setPatientName(cursor.getString(1));
-            patient.setPatientGender(cursor.getInt(2));
-            patient.setPatientDepartment(cursor.getString(3));
+            Patients patients = new Patients();
+            patients.setPatientId(cursor.getInt(0));
+            patients.setPatientName(cursor.getString(1));
+            patients.setPatientGender(cursor.getInt(2));
+            patients.setPatientDepartment(cursor.getString(3));
 
-            patientList.add(patient);
+            patientsList.add(patients);
         }
         cursor.close();
-        return  patientList;
+        return patientsList;
+    }
+
+    public ArrayList<Tests> getPatientTests(Object id, String fieldName) throws Exception{
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Tests> testsList = new ArrayList<>();
+        String query = "SELECT a.patientId, a.covid19, a.createdAt, a.bloodPressure, a.respiratoryRate, a.bloodOxygenLevel, a.heartBeatRate FROM Tests a INNER JOIN Patients b ON a.patientId=b.patientId where a." + fieldName + " = " + String.valueOf(id);
+        Cursor cursor = db.rawQuery(query,null);
+        while (cursor.moveToNext()){
+            Tests tests = new Tests();
+            tests.setPatientId(cursor.getInt(0));
+            tests.setTestCovid19(cursor.getInt(1));
+            tests.setCreatedAt(cursor.getString(2));
+            tests.setBloodPressure(cursor.getInt(3));
+            tests.setRespiratoryRate(cursor.getInt(4));
+            tests.setBloodOxygenLevel(cursor.getInt(5));
+            tests.setHeartBeatRate(cursor.getInt(6));
+
+            testsList.add(tests);
+        }
+        cursor.close();
+        return testsList;
+    }
+
+    public boolean addPatientTestRow  (ContentValues values) throws Exception {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Insert the row
+        long nr= db.insert("Tests", null, values);
+        db.close(); //close database connection
+        return nr> -1;
     }
     //
     //
@@ -121,7 +157,7 @@ public class PatientManager extends SQLiteOpenHelper {
     public boolean editRow (Object id, String fieldName, ContentValues values) throws Exception {
         SQLiteDatabase db = this.getWritableDatabase();
         //
-        int nr = db.update(tableName, values, fieldName + " = ? ", new String[]{String.valueOf(id)});
+        int nr = db.update("Patients", values, fieldName + " = ? ", new String[]{String.valueOf(id)});
         return nr > 0;
     }
 }
