@@ -2,6 +2,7 @@ package ibrahim.ali.s301022172;
 
 public class Tests {
     //private fields
+    private int _TestId;
     private int _PatientId;
     private int _TestCovid19;
     private String _CreatedAt;
@@ -25,6 +26,13 @@ public class Tests {
     }
 
     //getter and setter methods
+    public int getTestId() {
+        return this._TestId;
+    }
+    public void setTestId( int testId) {
+        this._TestId = testId;
+    }
+
     public int getPatientId() {
         return _PatientId;
     }

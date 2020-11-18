@@ -157,14 +157,4 @@ public class PatientManager extends SQLiteOpenHelper {
         int nr = db.delete("Tests","testId = ?", new String[]{String.valueOf(id)});
         return nr > 0;
     }
-    // The following argument should be passed:
-    // id - an Object which holds the primary key value
-    // fieldName - the  name of the primary key field
-    // values - a ContentValues object that holds row values
-    public boolean editRow (Object id, String fieldName, ContentValues values) throws Exception {
-        SQLiteDatabase db = this.getWritableDatabase();
-        //
-        int nr = db.update("Patients", values, fieldName + " = ? ", new String[]{String.valueOf(id)});
-        return nr > 0;
-    }
 }

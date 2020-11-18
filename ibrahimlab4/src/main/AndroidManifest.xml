@@ -9,7 +9,9 @@
         android:roundIcon="@drawable/ic_hospital_building"
         android:supportsRtl="true"
         android:theme="@style/Theme.IbrahimLab4">
-        <activity android:name=".AliShowPatientsTestsListActivity"></activity>
+        <activity android:name=".AliAddTestsActivity"></activity>
+        <activity android:name=".AliAddPatientActivity" />
+        <activity android:name=".AliShowPatientsTestsListActivity" />
         <activity android:name=".AliAddTestActivity" />
         <activity android:name=".AliPatientListActivity" />
         <activity android:name=".IbrahimActivity">

@@ -64,12 +64,13 @@ public class AliPatientListActivity extends AppCompatActivity {
             deparment.setPadding(5,10,0,10);
             linearLayout.addView(deparment);
 
+            int patientId = i;
             Button btnShowTests = new Button(this);
             btnShowTests.setText("Show Test(s)");
             btnShowTests.setOnClickListener(v -> {
 
                 Intent intent = new Intent(AliPatientListActivity.this,AliShowPatientsTestsListActivity.class);
-                //patients.get(i).getPatientId()
+                intent.putExtra("id", String.valueOf(patients.get(patientId).getPatientId()));
                 startActivity(intent);
             });
             linearLayout.addView(btnShowTests);
@@ -79,7 +80,8 @@ public class AliPatientListActivity extends AppCompatActivity {
             btnAddTests.setOnClickListener(v -> {
 
                 Intent intent = new Intent(AliPatientListActivity.this,AliAddTestActivity.class);
-                //patients.get(i).getPatientId()
+                intent.putExtra("id", String.valueOf(patients.get(patientId).getPatientId()));
+                intent.putExtra("name", String.valueOf(patients.get(patientId).getPatientName()));
                 startActivity(intent);
             });
             linearLayout.addView(btnAddTests);

@@ -7,32 +7,28 @@ package ibrahim.ali.s301022172;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Spinner;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import java.util.ArrayList;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class IbrahimActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class IbrahimActivity extends AppCompatActivity {
 
     private PatientManager patientManager;
-    private EditText txtId, txtPatientName;
-    private Spinner spinner, txtPatientDepartment;
-    private RadioButton txtPatientGenderM, txtPatientGenderF;
-    private Button btnAdd, btnShow, btnEdit;
+    FloatingActionButton startFab, addFab, testFab;
+    private Boolean clicked = false;
+    Intent intent;
+    Toolbar toolbar;
 
     private final static String TABLE_PATIENTS = "Patients";
     //sql string to create the table
@@ -49,28 +45,6 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ibrahim);
 
-        spinner = (Spinner) findViewById(R.id.ibrahimSpinnerInsert);
-        spinner.setOnItemSelectedListener(this);
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.deparments_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-
-
-        //
-        txtId = (EditText) findViewById(R.id.ibrahimIdInsert);
-        txtPatientName = (EditText) findViewById(R.id.ibrahimNameInsert);
-        txtPatientGenderM = (RadioButton) findViewById(R.id.ibrahimGenderM);
-        txtPatientGenderF = (RadioButton) findViewById(R.id.ibrahimGenderF);
-        txtPatientDepartment = (Spinner) findViewById(R.id.ibrahimSpinnerInsert);
-        //
-        btnAdd = (Button)findViewById(R.id.ibrahimBtnAdd);
-        btnShow = (Button)findViewById(R.id.ibrahimBtnShow);
-        btnEdit = (Button)findViewById(R.id.ibrahimBtnEdit);
         // instantiate the StudentManager
         // initialize the tables
         try {
@@ -84,55 +58,73 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
                     exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ",exception.getMessage());
         }
+
+        startFab = (FloatingActionButton) findViewById(R.id.ibrahimFabStart);
+        startFab.setOnClickListener(v -> onAddButtonClicked());
+
+        addFab = (FloatingActionButton) findViewById(R.id.ibrahimFabAddPatient);
+        addFab.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(IbrahimActivity.this, AliAddPatientActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        testFab = (FloatingActionButton) findViewById(R.id.ibrahimFabAddTest);
+        testFab.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+//                intent = new Intent(IbrahimActivity.this, AliAddPatientActivity.class);
+//                startActivity(intent);
+            }
+        });
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view,int pos, long id) { }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
+    private void onAddButtonClicked() {
+        setVisibility(clicked);
+        setAnimation(clicked);
+        setClickable(clicked);
+        clicked = !clicked;
     }
 
-    public void addPatient(View view)
-    {
-        if(txtId.getText().toString().isEmpty() != true && txtPatientName.getText().toString().isEmpty() != true){
-            //read values for text fields
-            int patientId = Integer.parseInt(txtId.getText().toString());
-            String patientName = txtPatientName.getText().toString();
-            int patientGender = 0;
-            if (txtPatientGenderM.isChecked()) {
-                patientGender = 1;
-            }
-            if (txtPatientGenderF.isChecked()) {
-                patientGender = 2;
-            }
+    private void setVisibility(Boolean clicked){
 
-            //initialize ContentValues object with the new student
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("patientId",patientId);
-            contentValues.put("patientName",patientName);
-            contentValues.put("patientGender",patientGender);    //check
-            contentValues.put("patientDepartment",txtPatientDepartment.getSelectedItem().toString()); //check
-            //
-            try {
-                if(txtId.getText().toString().trim().length() == 4){
-                    ArrayList<Patients> patients = patientManager.getPatientsList();
-                    for(int i=0; i< patients.size(); i++) {
-                        if(patients.get(i).getPatientId() == Integer.parseInt(txtId.getText().toString())){
-                            Toast.makeText(IbrahimActivity.this,"Id must be unique", Toast.LENGTH_SHORT).show();
-                            break;
-                        }else if(patients.size() == i+1){
-                            patientManager.addRow(contentValues);
-                            Toast.makeText(IbrahimActivity.this,"New patient has been added", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }else{
-                    txtId.setError("Must be 4 unique digits");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        if(!clicked){
+            addFab.setVisibility(View.VISIBLE);
+            testFab.setVisibility(View.VISIBLE);
         }else{
-            Toast.makeText(IbrahimActivity.this,"Please insert new patient values", Toast.LENGTH_SHORT).show();
+            addFab.setVisibility(View.INVISIBLE);
+            testFab.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setAnimation(Boolean clicked){
+
+        Animation rotateOpen = AnimationUtils.loadAnimation(this, R.anim.rotate_open);
+        Animation rotateClose = AnimationUtils.loadAnimation(this, R.anim.rotate_close);
+        Animation rotateFromBottom = AnimationUtils.loadAnimation(this, R.anim.from_bottom);
+        Animation rotateToBottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom);
+
+        if(!clicked){
+            startFab.startAnimation(rotateOpen);
+            addFab.startAnimation(rotateFromBottom);
+            testFab.startAnimation(rotateFromBottom);
+        }else{
+            startFab.startAnimation(rotateClose);
+            addFab.startAnimation(rotateToBottom);
+            testFab.startAnimation(rotateToBottom);
+        }
+    }
+
+    private void setClickable(Boolean clicked){
+        if(!clicked){
+            addFab.setClickable(true);
+            testFab.setClickable(true);
+
+        }else{
+            addFab.setClickable(false);
+            testFab.setClickable(false);
         }
     }
 
@@ -141,64 +133,21 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
         startActivity(intent);
     }
 
-    public void showPatient(View view)
-    {
-        try {
-            Patients patients = patientManager.getPatientById(txtId.getText().toString(), "patientId");
-            txtPatientName.setText(patients.getPatientName());
-            if (patients.getPatientGender() == 1) {
-                txtPatientGenderM.setChecked(true);
-            }
-            if (patients.getPatientGender() == 2) {
-                txtPatientGenderF.setChecked(true);
-            }
-            txtPatientDepartment.setSelection(getIndex(txtPatientDepartment, patients.getPatientDepartment()));
-        }
-        catch (Exception exception)
-        {
-            Toast.makeText(IbrahimActivity.this,
-                    exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("Error: ",exception.getMessage());
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
-    //private method of your class
-    private int getIndex(Spinner spinner, String myString){
-        for (int i=0;i<spinner.getCount();i++){
-            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
-                return i;
-            }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.search) {
+            Toast.makeText(getApplicationContext(), "Search", Toast.LENGTH_LONG).show();
+            return true;
         }
-        return 0;
-    }
-    //
-    public void editStudent(View view)
-    {
-        int patientId = Integer.parseInt(txtId.getText().toString());
-        String patienttName = txtPatientName.getText().toString();
-        int patientGender = 0;
-        if (txtPatientGenderM.isChecked()) {
-            patientGender = 1;
-        }
-        if (txtPatientGenderF.isChecked()) {
-            patientGender = 2;
-        }
-
-        try{
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("patientId",patientId);
-            contentValues.put("patientName",patienttName);
-            contentValues.put("patientGender",patientGender);    //check
-            contentValues.put("patientDepartment",txtPatientDepartment.getSelectedItem().toString()); //check
-            //edit the row
-            boolean b= patientManager.editRow(patientId, "patientId", contentValues);
-        }
-        catch(Exception exception)
-        {
-            Toast.makeText(IbrahimActivity.this,
-                    exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("Error: ",exception.getMessage());
-        }
+        return super.onOptionsItemSelected(item);
     }
 
     //If back btn pressed, display alert dialog

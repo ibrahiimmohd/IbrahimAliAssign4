@@ -50,4 +50,10 @@ public class Patients {
     public void setPatientDepartment(String patientDepartment) {
         this._patientDepartment = patientDepartment;
     }
+
+    @Override
+    public String toString(){
+
+        return _patientName + "#" + _patientId;
+    }
 }

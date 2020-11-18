@@ -13,6 +13,8 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,17 +23,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AliAddTestActivity extends AppCompatActivity {
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class AliAddTestsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     PatientManager patientManager;
+    ArrayList<Patients> patients;
     DatePickerDialog picker;
     EditText datePicker;
     String id, name;
+    Spinner spinner;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ali_add_test);
+        setContentView(R.layout.activity_ali_add_tests);
 
         getSupportActionBar().setTitle("Add Test");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -47,7 +54,7 @@ public class AliAddTestActivity extends AppCompatActivity {
             int month = cldr.get(Calendar.MONTH);
             int year = cldr.get(Calendar.YEAR);
             // date picker dialog
-            picker = new DatePickerDialog(AliAddTestActivity.this,
+            picker = new DatePickerDialog(AliAddTestsActivity.this,
                     new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -56,6 +63,24 @@ public class AliAddTestActivity extends AppCompatActivity {
                     }, year, month, day);
             picker.show();
         });
+
+        spinner = (Spinner) findViewById(R.id.ibrahimPatientSpinner);
+        spinner.setOnItemSelectedListener(this);
+
+        patients = new ArrayList<>();
+        try {
+            patients = patientManager.getPatientsList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+//                patients, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        // Apply the adapter to the spinner
+//        spinner.setAdapter(adapter);
 
         id = getIntent().getExtras().getString("id");
         name = getIntent().getExtras().getString("name");
@@ -109,7 +134,7 @@ public class AliAddTestActivity extends AppCompatActivity {
         catch(Exception exception)
         {
             //
-            Toast.makeText(AliAddTestActivity.this,
+            Toast.makeText(AliAddTestsActivity.this,
                     exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ",exception.getMessage());
 
@@ -120,9 +145,19 @@ public class AliAddTestActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             //finish();
-            Intent intent = new Intent(AliAddTestActivity.this,IbrahimActivity.class);
+            Intent intent = new Intent(AliAddTestsActivity.this,IbrahimActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
