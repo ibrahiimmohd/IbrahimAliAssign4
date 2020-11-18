@@ -123,17 +123,18 @@ public class PatientManager extends SQLiteOpenHelper {
     public ArrayList<Tests> getPatientTests(Object id, String fieldName) throws Exception{
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Tests> testsList = new ArrayList<>();
-        String query = "SELECT a.patientId, a.covid19, a.createdAt, a.bloodPressure, a.respiratoryRate, a.bloodOxygenLevel, a.heartBeatRate FROM Tests a INNER JOIN Patients b ON a.patientId=b.patientId where a." + fieldName + " = " + String.valueOf(id);
+        String query = "SELECT a.testId, a.patientId, a.covid19, a.createdAt, a.bloodPressure, a.respiratoryRate, a.bloodOxygenLevel, a.heartBeatRate FROM Tests a INNER JOIN Patients b ON a.patientId=b.patientId where a." + fieldName + " = " + String.valueOf(id);
         Cursor cursor = db.rawQuery(query,null);
         while (cursor.moveToNext()){
             Tests tests = new Tests();
-            tests.setPatientId(cursor.getInt(0));
-            tests.setTestCovid19(cursor.getInt(1));
-            tests.setCreatedAt(cursor.getString(2));
-            tests.setBloodPressure(cursor.getInt(3));
-            tests.setRespiratoryRate(cursor.getInt(4));
-            tests.setBloodOxygenLevel(cursor.getInt(5));
-            tests.setHeartBeatRate(cursor.getInt(6));
+            tests.setTestId(cursor.getInt(0));
+            tests.setPatientId(cursor.getInt(1));
+            tests.setTestCovid19(cursor.getInt(2));
+            tests.setCreatedAt(cursor.getString(3));
+            tests.setBloodPressure(cursor.getInt(4));
+            tests.setRespiratoryRate(cursor.getInt(5));
+            tests.setBloodOxygenLevel(cursor.getInt(6));
+            tests.setHeartBeatRate(cursor.getInt(7));
 
             testsList.add(tests);
         }
@@ -148,8 +149,14 @@ public class PatientManager extends SQLiteOpenHelper {
         db.close(); //close database connection
         return nr> -1;
     }
-    //
-    //
+
+    public boolean deleteTest (Object id) throws Exception {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int nr = db.delete("Tests","testId = ?", new String[]{String.valueOf(id)});
+        return nr > 0;
+    }
     // The following argument should be passed:
     // id - an Object which holds the primary key value
     // fieldName - the  name of the primary key field
