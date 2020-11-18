@@ -24,6 +24,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import java.util.ArrayList;
+
 public class IbrahimActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private PatientManager patientManager;
@@ -92,34 +94,45 @@ public class IbrahimActivity extends AppCompatActivity implements AdapterView.On
 
     public void addPatient(View view)
     {
-        //read values for text fields
-        int patientId = Integer.parseInt(txtId.getText().toString());
-        String patientName = txtPatientName.getText().toString();
-        int patientGender = 0;
-        if (txtPatientGenderM.isChecked()) {
-            patientGender = 1;
-        }
-        if (txtPatientGenderF.isChecked()) {
-            patientGender = 2;
-        }
+        if(txtId.getText().toString().isEmpty() != true && txtPatientName.getText().toString().isEmpty() != true){
+            //read values for text fields
+            int patientId = Integer.parseInt(txtId.getText().toString());
+            String patientName = txtPatientName.getText().toString();
+            int patientGender = 0;
+            if (txtPatientGenderM.isChecked()) {
+                patientGender = 1;
+            }
+            if (txtPatientGenderF.isChecked()) {
+                patientGender = 2;
+            }
 
-        //initialize ContentValues object with the new student
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("patientId",patientId);
-        contentValues.put("patientName",patientName);
-        contentValues.put("patientGender",patientGender);    //check
-        contentValues.put("patientDepartment",txtPatientDepartment.getSelectedItem().toString()); //check
-        //
-        try {
-            patientManager.addRow(contentValues);
-        }
-        catch(Exception exception)
-        {
+            //initialize ContentValues object with the new student
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("patientId",patientId);
+            contentValues.put("patientName",patientName);
+            contentValues.put("patientGender",patientGender);    //check
+            contentValues.put("patientDepartment",txtPatientDepartment.getSelectedItem().toString()); //check
             //
-            Toast.makeText(IbrahimActivity.this,
-                    exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("Error: ",exception.getMessage());
-
+            try {
+                if(txtId.getText().toString().trim().length() == 4){
+                    ArrayList<Patients> patients = patientManager.getPatientsList();
+                    for(int i=0; i< patients.size(); i++) {
+                        if(patients.get(i).getPatientId() == Integer.parseInt(txtId.getText().toString())){
+                            Toast.makeText(IbrahimActivity.this,"Id must be unique", Toast.LENGTH_SHORT).show();
+                            break;
+                        }else if(patients.size() == i+1){
+                            patientManager.addRow(contentValues);
+                            Toast.makeText(IbrahimActivity.this,"New patient has been added", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }else{
+                    txtId.setError("Must be 4 unique digits");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            Toast.makeText(IbrahimActivity.this,"Please insert new patient values", Toast.LENGTH_SHORT).show();
         }
     }
 
