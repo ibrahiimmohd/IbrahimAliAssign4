@@ -81,12 +81,12 @@ public class AliAddPatientActivity extends AppCompatActivity implements AdapterV
             contentValues.put("patientId",patientId);
             contentValues.put("patientName",patientName);
             contentValues.put("patientGender",patientGender);    //check
-            contentValues.put("patientDepartment",txtPatientDepartment.getSelectedItem().toString()); //check
-            //
+            contentValues.put("patientDepartment",txtPatientDepartment.getSelectedItem().toString());
+
             try {
                 if(txtId.getText().toString().trim().length() == 4){
                     ArrayList<Patients> patients = patientManager.getPatientsList();
-                    for(int i=0; i< patients.size(); i++) {
+                    for(int i=0; i<= patients.size(); i++) {
                         if(patients.get(i).getPatientId() == Integer.parseInt(txtId.getText().toString())){
                             Toast.makeText(AliAddPatientActivity.this,"Id must be unique", Toast.LENGTH_SHORT).show();
                             break;
