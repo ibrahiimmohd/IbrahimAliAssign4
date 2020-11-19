@@ -4,29 +4,29 @@
     * Section: COMP 304 - 002
 -->
 <resources>
-    <string name="app_name">IbrahimLab4</string>
-    <string name="prompt">Choose a Department</string>
-    <string name="prompt1">Choose Patient</string>
-    <string name="ibrahimStrName">Name</string>
-    <string name="ibrahimStrGender">Gender</string>
-    <string name="ibrahimStrDepartment">Department</string>
-    <string name="ibrahimStrMale">Male</string>
-    <string name="ibrahimStrFemale">Female</string>
-    <string name="ibrahimStrAddBtn">Add</string>
-    <string name="ibrahimStrRR">Respiratory Rate</string>
-    <string name="ibrahimStrHR">Heart Rate</string>
-    <string name="ibrahimStrId">Patient Id</string>
-    <string name="ibrahimStrDate">Date Created</string>
-    <string name="ibrahimStrPositive">Positive</string>
-    <string name="ibrahimStrNegative">Negative</string>
-    <string name="ibrahimStrBP">Blood Pressure</string>
-    <string name="ibrahimStrBOL">Blood Oxygen Level</string>
-    <string name="ibrahimStrCovidTest">Covid Test</string>
-    <string name="ibrahimStrPatient">Patient</string>
-    <string name="ibrahimStrSearchId">Search By Patient Id</string>
-    <string name="ibrahimStrPList">Patients List</string>
+    <string name="app_name">Gestion des données cliniques des patients</string>
+    <string name="prompt">Choisissez un département</string>
+    <string name="prompt1">Choisissez le patient</string>
+    <string name="ibrahimStrName">Nom</string>
+    <string name="ibrahimStrGender">Le genre</string>
+    <string name="ibrahimStrDepartment">département</string>
+    <string name="ibrahimStrMale">Femelle</string>
+    <string name="ibrahimStrFemale">Femelle</string>
+    <string name="ibrahimStrAddBtn">Ajouter</string>
+    <string name="ibrahimStrRR">Fréquence respiratoire</string>
+    <string name="ibrahimStrHR">Rythme cardiaque</string>
+    <string name="ibrahimStrId">ID du patient</string>
+    <string name="ibrahimStrDate">date créée</string>
+    <string name="ibrahimStrPositive">Positif</string>
+    <string name="ibrahimStrNegative">Négative</string>
+    <string name="ibrahimStrBP">Pression artérielle</string>
+    <string name="ibrahimStrBOL">Niveau d\'oxygène dans le sang</string>
+    <string name="ibrahimStrCovidTest">Test de Covid</string>
+    <string name="ibrahimStrPatient">Patiente</string>
+    <string name="ibrahimStrSearchId">Recherche par ID Patiente</string>
+    <string name="ibrahimStrPList">Liste des tests</string>
     <string name="ibrahimStrTestL">Tests List</string>
-    <string name="ibrahimStrAppName">Patient Clinical Data Management Application</string>
+    <string name="ibrahimStrAppName">Application de gestion des données cliniques des patients</string>
 
     <string-array name="deparments_array">
         <item>Anesthesia</item>

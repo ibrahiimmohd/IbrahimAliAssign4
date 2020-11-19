@@ -4,7 +4,7 @@
     * Section: COMP 304 - 002
 -->
 <resources>
-    <string name="app_name">IbrahimLab4</string>
+    <string name="app_name">Patient Clinical Data Management</string>
     <string name="prompt">Choose a Department</string>
     <string name="prompt1">Choose Patient</string>
     <string name="ibrahimStrName">Patient Name</string>
