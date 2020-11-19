@@ -1,3 +1,8 @@
+/**
+ * Full Name: Ibrahim Ali
+ * Student ID: 301022172
+ * Section: COMP 304 - 002
+ * */
 package ibrahim.ali.s301022172;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +11,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,6 +38,9 @@ public class AliAddPatientActivity extends AppCompatActivity implements AdapterV
         getSupportActionBar().setTitle("Add Patient");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        patientManager = new PatientManager(this);
+
 
         spinner = (Spinner) findViewById(R.id.ibrahimSpinnerInsert);
         spinner.setOnItemSelectedListener(this);
@@ -82,8 +91,13 @@ public class AliAddPatientActivity extends AppCompatActivity implements AdapterV
                             Toast.makeText(AliAddPatientActivity.this,"Id must be unique", Toast.LENGTH_SHORT).show();
                             break;
                         }else if(patients.size() == i+1){
-                            patientManager.addRow(contentValues);
-                            Toast.makeText(AliAddPatientActivity.this,"New patient has been added", Toast.LENGTH_SHORT).show();
+                            if(patientName.length() >= 2){
+                                patientManager.addRow(contentValues);
+                                Toast.makeText(AliAddPatientActivity.this,"New patient has been added", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(AliAddPatientActivity.this,"Name must be 2 or more letters", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                     }
                 }else{
@@ -109,9 +123,18 @@ public class AliAddPatientActivity extends AppCompatActivity implements AdapterV
             //finish();
             Intent intent = new Intent(AliAddPatientActivity.this,IbrahimActivity.class);
             startActivity(intent);
+        }else if(item.getItemId() == R.id.search) {
+            Intent intent = new Intent(this, AliSearchActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
 }

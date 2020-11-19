@@ -28,7 +28,6 @@ public class IbrahimActivity extends AppCompatActivity {
     FloatingActionButton startFab, addFab, testFab;
     private Boolean clicked = false;
     Intent intent;
-    Toolbar toolbar;
 
     private final static String TABLE_PATIENTS = "Patients";
     //sql string to create the table

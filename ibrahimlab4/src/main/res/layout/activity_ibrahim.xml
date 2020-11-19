@@ -9,16 +9,19 @@
 
     <Button
         android:id="@+id/ibrahimShowPatientsBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="340dp"
+        android:layout_width="273dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="300dp"
         android:onClick="showPatientsList"
-        android:text="Patients List"
+        android:text="@string/ibrahimStrPList"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/btnColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ibrahimBtnAdd" />
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimImageView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ibrahimFabStart"
@@ -27,9 +30,8 @@
         android:layout_gravity="bottom|end|bottom"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:background="@color/colorPrimary"
+        app:backgroundTint="@color/btnColor"
         android:clickable="true"
-        android:contentDescription="Add"
         android:focusable="true"
         android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,6 +49,7 @@
         android:focusable="true"
         android:visibility="invisible"
         android:tint="@color/white"
+        app:backgroundTint="@color/fabTestColor"
         app:layout_constraintBottom_toTopOf="@+id/ibrahimFabStart"
         app:layout_constraintEnd_toEndOf="@+id/ibrahimFabStart"
         app:srcCompat="@drawable/ic_local_hospital_black_18dp" />
@@ -58,10 +61,36 @@
         android:layout_marginBottom="36dp"
         android:clickable="true"
         android:focusable="true"
+        android:tint="@color/white"
+        app:backgroundTint="@color/fabAddPatientColor"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/ibrahimFabAddTest"
         app:layout_constraintEnd_toEndOf="@+id/ibrahimFabAddTest"
         app:srcCompat="@drawable/ic_perm_identity_24px" />
+
+    <TextView
+        android:id="@+id/ibrahimAppName"
+        android:layout_width="298dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="56dp"
+        android:gravity="center"
+        android:text="@string/ibrahimStrAppName"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ibrahimImageView"
+        android:layout_width="320dp"
+        android:layout_height="202dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimAppName"
+        app:srcCompat="@drawable/hospital" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

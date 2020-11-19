@@ -1,3 +1,8 @@
+/**
+ * Full Name: Ibrahim Ali
+ * Student ID: 301022172
+ * Section: COMP 304 - 002
+ * */
 package ibrahim.ali.s301022172;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -5,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -33,6 +39,11 @@ public class AliPatientListActivity extends AppCompatActivity {
         }
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ibrahimShowPatientsLayout);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(150,10,0,15);
 
         for(int i=0; i< patients.size(); i++) {
             TextView id = new TextView(this);
@@ -67,6 +78,10 @@ public class AliPatientListActivity extends AppCompatActivity {
             int patientId = i;
             Button btnShowTests = new Button(this);
             btnShowTests.setText("Show Test(s)");
+            btnShowTests.setBackgroundColor(getResources().getColor(R.color.btnColor));
+            btnShowTests.setTextColor(getResources().getColor(R.color.white));
+            btnShowTests.setLayoutParams(params);
+            btnShowTests.setPadding(250,25,250,25);
             btnShowTests.setOnClickListener(v -> {
 
                 Intent intent = new Intent(AliPatientListActivity.this,AliShowPatientsTestsListActivity.class);
@@ -77,6 +92,10 @@ public class AliPatientListActivity extends AppCompatActivity {
 
             Button btnAddTests = new Button(this);
             btnAddTests.setText("Add Test(s)");
+            btnAddTests.setBackgroundColor(getResources().getColor(R.color.btnColor));
+            btnAddTests.setTextColor(getResources().getColor(R.color.white));
+            btnAddTests.setLayoutParams(params);
+            btnAddTests.setPadding(250,25,290,25);
             btnAddTests.setOnClickListener(v -> {
 
                 Intent intent = new Intent(AliPatientListActivity.this,AliAddTestActivity.class);
@@ -94,7 +113,17 @@ public class AliPatientListActivity extends AppCompatActivity {
             //finish();
             Intent intent = new Intent(AliPatientListActivity.this,IbrahimActivity.class);
             startActivity(intent);
+        }else if(item.getItemId() == R.id.search) {
+            Intent intent = new Intent(this, AliSearchActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 }

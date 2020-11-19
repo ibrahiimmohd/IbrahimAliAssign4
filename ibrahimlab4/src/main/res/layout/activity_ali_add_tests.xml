@@ -22,7 +22,7 @@ tools:context=".AliAddTestsActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Respiratory Rate"
+        android:text="@string/ibrahimStrRR"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimHRTv" />
 
@@ -31,7 +31,7 @@ tools:context=".AliAddTestsActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Heart Rate"
+        android:text="@string/ibrahimStrHR"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimBPTV" />
 
@@ -40,7 +40,7 @@ tools:context=".AliAddTestsActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="Date Created"
+        android:text="@string/ibrahimStrDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimPatientIdTv" />
 
@@ -91,6 +91,7 @@ tools:context=".AliAddTestsActivity">
         android:id="@+id/ibrahimAddTestCovidGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.82"
@@ -101,21 +102,23 @@ tools:context=".AliAddTestsActivity">
             android:id="@+id/ibrahimPositiveRadioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Positive" />
+            android:text="@string/ibrahimStrPositive" />
 
         <RadioButton
             android:id="@+id/ibrahimNegativeRadioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Negative" />
+            android:text="@string/ibrahimStrNegative" />
     </RadioGroup>
 
     <Button
         android:id="@+id/ibrahimBtnAddTest"
-        android:layout_width="150dp"
-        android:layout_height="61dp"
+        android:layout_width="274dp"
+        android:layout_height="67dp"
         android:onClick="addPatientTest"
-        android:text="Add"
+        android:text="@string/ibrahimStrAddBtn"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/btnColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.455"
@@ -128,7 +131,7 @@ tools:context=".AliAddTestsActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Blood Pressure"
+        android:text="@string/ibrahimStrBP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimDateCreatedTv" />
 
@@ -137,7 +140,7 @@ tools:context=".AliAddTestsActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Blood Oxygen Level"
+        android:text="@string/ibrahimStrBOL"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimRRTV" />
 
@@ -146,7 +149,7 @@ tools:context=".AliAddTestsActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Covid Test"
+        android:text="@string/ibrahimStrCovidTest"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimBOLTV" />
 
@@ -167,7 +170,7 @@ tools:context=".AliAddTestsActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
-        android:text="Patient"
+        android:text="@string/ibrahimStrPatient"
         app:layout_constraintEnd_toStartOf="@+id/ibrahimSpinnerInsert"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"

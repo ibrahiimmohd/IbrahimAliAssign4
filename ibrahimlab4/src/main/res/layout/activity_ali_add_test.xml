@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Respiratory Rate"
+        android:text="@string/ibrahimStrRR"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimHRTv" />
 
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Heart Rate"
+        android:text="@string/ibrahimStrHR"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimBPTV" />
 
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:text="Patient ID"
+        android:text="@string/ibrahimStrId"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Patient Name"
+        android:text="@string/ibrahimStrName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestIdTv" />
 
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Date Created"
+        android:text="@string/ibrahimStrDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestNameTv" />
 
@@ -120,6 +120,7 @@
         android:id="@+id/ibrahimAddTestCovidGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.82"
@@ -130,32 +131,36 @@
             android:id="@+id/ibrahimPositiveRadioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Positive" />
+            android:text="@string/ibrahimStrPositive" />
 
         <RadioButton
             android:id="@+id/ibrahimNegativeRadioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Negative" />
+            android:text="@string/ibrahimStrNegative" />
     </RadioGroup>
 
     <Button
         android:id="@+id/ibrahimBtnAddTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"
+        android:layout_width="267dp"
+        android:layout_height="77dp"
         android:onClick="addPatientTest"
+        android:text="@string/ibrahimStrAddBtn"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/btnColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestCovidGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestCovidGroup"
+        app:layout_constraintVertical_bias="0.395" />
 
     <TextView
         android:id="@+id/ibrahimBPTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Blood Pressure"
+        android:text="@string/ibrahimStrBP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimDateCreatedTv" />
 
@@ -164,7 +169,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Blood Oxygen Level"
+        android:text="@string/ibrahimStrBOL"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimRRTV" />
 
@@ -173,7 +178,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Covid Test"
+        android:text="@string/ibrahimStrCovidTest"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimBOLTV" />
 

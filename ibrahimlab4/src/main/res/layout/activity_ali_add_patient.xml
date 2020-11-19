@@ -6,14 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".AliAddPatientActivity">
 
-
     <TextView
         android:id="@+id/ibrahimIdTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:maxLength="4"
-        android:text="Id"
+        android:text="@string/ibrahimStrId"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="Name"
+        android:text="@string/ibrahimStrName"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimGenderTV" />
@@ -33,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Gender"
+        android:text="@string/ibrahimStrGender"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimIdTV" />
@@ -43,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="Department"
+        android:text="@string/ibrahimStrDepartment"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +57,6 @@
         android:ems="10"
         android:inputType="number"
         android:maxLength="4"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ibrahimIdTV"
@@ -80,16 +78,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:width="110dp"
-            android:text="Male" />
+            android:text="@string/ibrahimStrMale" />
 
         <RadioButton
             android:id="@+id/ibrahimGenderF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:width="110dp"
-            android:text="Female" />
+            android:text="@string/ibrahimStrFemale" />
     </RadioGroup>
-
 
     <EditText
         android:id="@+id/ibrahimNameInsert"
@@ -120,14 +117,16 @@
 
     <Button
         android:id="@+id/ibrahimBtnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="136dp"
+        android:layout_width="232dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="88dp"
         android:onClick="addPatient"
-        android:text="Add"
+        android:text="@string/ibrahimStrAddBtn"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/btnColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimGDepartmentTV"
-        app:layout_constraintVertical_bias="0.285" />
+        app:layout_constraintVertical_bias="0.291" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

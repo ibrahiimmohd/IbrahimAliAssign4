@@ -7,9 +7,9 @@
     <string name="app_name">IbrahimLab4</string>
     <string name="prompt">Choose a Department</string>
     <string name="prompt1">Choose Patient</string>
-    <string name="ibrahimStrName">Patient Name</string>
-    <string name="ibrahimStrGender">Patient Gender</string>
-    <string name="ibrahimStrDepartment">Patient Department</string>
+    <string name="ibrahimStrName">Name</string>
+    <string name="ibrahimStrGender">Gender</string>
+    <string name="ibrahimStrDepartment">Department</string>
     <string name="ibrahimStrMale">Male</string>
     <string name="ibrahimStrFemale">Female</string>
     <string name="ibrahimStrAddBtn">Add</string>

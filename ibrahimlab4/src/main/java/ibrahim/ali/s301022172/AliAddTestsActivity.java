@@ -1,3 +1,8 @@
+/**
+ * Full Name: Ibrahim Ali
+ * Student ID: 301022172
+ * Section: COMP 304 - 002
+ * */
 package ibrahim.ali.s301022172;
 
 import androidx.annotation.RequiresApi;
@@ -11,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,7 +45,7 @@ public class AliAddTestsActivity extends AppCompatActivity implements AdapterVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ali_add_tests);
 
-        getSupportActionBar().setTitle("Add Test");
+        getSupportActionBar().setTitle("Add Tests");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -135,8 +141,18 @@ public class AliAddTestsActivity extends AppCompatActivity implements AdapterVie
             //finish();
             Intent intent = new Intent(AliAddTestsActivity.this,IbrahimActivity.class);
             startActivity(intent);
+        }else if(item.getItemId() == R.id.search) {
+            Intent intent = new Intent(this, AliSearchActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     @Override
