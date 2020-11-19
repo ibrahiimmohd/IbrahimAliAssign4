@@ -7,22 +7,22 @@
     tools:context=".AliAddTestActivity">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/ibrahimRRTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Respiratory Rate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimHRTv" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/ibrahimHRTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Heart Rate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimBPTV" />
 
     <TextView
         android:id="@+id/ibrahimAddTestIdTv"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestIdShow" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/ibrahimDateCreatedTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -80,7 +80,7 @@
         android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimDateCreatedTv"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestNameShow" />
 
     <EditText
@@ -91,7 +91,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimBPTV"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestDateInsert" />
 
     <EditText
@@ -102,7 +102,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimHRTv"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestBPInsert" />
 
     <EditText
@@ -113,7 +113,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimBOLTV"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestRRInsert" />
 
     <RadioGroup
@@ -123,7 +123,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.82"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimCovidTv"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestBOLInsert">
 
         <RadioButton
@@ -151,31 +151,31 @@
         app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestCovidGroup" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/ibrahimBPTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Blood Pressure"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimDateCreatedTv" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/ibrahimBOLTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Blood Oxygen Level"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimRRTV" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/ibrahimCovidTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Covid Test"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimBOLTV" />
 
     <EditText
         android:id="@+id/ibrahimAddTestRRInsert"
@@ -186,6 +186,6 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimRRTV"
         app:layout_constraintTop_toBottomOf="@+id/ibrahimAddTestHRInsert" />
 </androidx.constraintlayout.widget.ConstraintLayout>

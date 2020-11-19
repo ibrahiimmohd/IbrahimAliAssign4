@@ -6,6 +6,7 @@
 <resources>
     <string name="app_name">IbrahimLab4</string>
     <string name="prompt">Choose a Department</string>
+    <string name="prompt1">Choose Patient</string>
 
     <string-array name="deparments_array">
         <item>Anesthesia</item>

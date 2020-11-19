@@ -54,6 +54,6 @@ public class Patients {
     @Override
     public String toString(){
 
-        return _patientName + "#" + _patientId;
+        return _patientName + " #" + _patientId;
     }
 }

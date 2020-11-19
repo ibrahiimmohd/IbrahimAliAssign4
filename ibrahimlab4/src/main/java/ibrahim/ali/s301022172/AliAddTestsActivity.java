@@ -31,7 +31,6 @@ public class AliAddTestsActivity extends AppCompatActivity implements AdapterVie
     ArrayList<Patients> patients;
     DatePickerDialog picker;
     EditText datePicker;
-    String id, name;
     Spinner spinner;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -75,21 +74,11 @@ public class AliAddTestsActivity extends AppCompatActivity implements AdapterVie
         }
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-//                patients, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        // Apply the adapter to the spinner
-//        spinner.setAdapter(adapter);
-
-        id = getIntent().getExtras().getString("id");
-        name = getIntent().getExtras().getString("name");
-
-        TextView idTV = (TextView) findViewById(R.id.ibrahimAddTestIdShow);
-        TextView nameTV = (TextView) findViewById(R.id.ibrahimAddTestNameShow);
-
-        idTV.setText(id);
-        nameTV.setText(name);
+        ArrayAdapter<Patients> adapter = new ArrayAdapter<Patients>(this, android.R.layout.simple_list_item_1, patients);
+        //Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
 
     }
 
@@ -115,29 +104,28 @@ public class AliAddTestsActivity extends AppCompatActivity implements AdapterVie
         int rr = Integer.parseInt(respiratoryRate.getText().toString());
         int bop = Integer.parseInt(bloodOxygenLevel.getText().toString());
         int hr = Integer.parseInt(heartBeatRate.getText().toString());
-        int patientId = Integer.parseInt(id);
+        String[] temp = String.valueOf(spinner.getSelectedItem()).split("#");
+        int patientId = Integer.parseInt(temp[1]);
 
         //read values for text fields
         //initialize ContentValues object with the new student
         ContentValues contentValues = new ContentValues();
         contentValues.put("patientId",patientId);
-        contentValues.put("covid19",patientCovidTest); //check
-        contentValues.put("createdAt",date);    //check
-        contentValues.put("bloodPressure",bp); //check
-        contentValues.put("respiratoryRate",rr); //check
-        contentValues.put("bloodOxygenLevel",bop); //check
-        contentValues.put("heartBeatRate",hr); //check
+        contentValues.put("covid19",patientCovidTest);
+        contentValues.put("createdAt",date);
+        contentValues.put("bloodPressure",bp);
+        contentValues.put("respiratoryRate",rr);
+        contentValues.put("bloodOxygenLevel",bop);
+        contentValues.put("heartBeatRate",hr);
 
         try {
             patientManager.addPatientTestRow(contentValues);
         }
         catch(Exception exception)
         {
-            //
             Toast.makeText(AliAddTestsActivity.this,
                     exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.i("Error: ",exception.getMessage());
-
         }
     }
 

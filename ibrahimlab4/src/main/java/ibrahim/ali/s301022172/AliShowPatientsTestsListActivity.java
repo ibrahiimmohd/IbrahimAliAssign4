@@ -90,7 +90,7 @@ public class AliShowPatientsTestsListActivity extends AppCompatActivity {
                     patientManager.deleteTest(tests.get(testId).getTestId());
 
                     Toast.makeText(AliShowPatientsTestsListActivity.this,
-                            String.valueOf(tests.get(testId).getTestId()), Toast.LENGTH_SHORT).show();
+                            "Test has been deleted", Toast.LENGTH_SHORT).show();
 
                 } catch (Exception e) {
                     e.printStackTrace();

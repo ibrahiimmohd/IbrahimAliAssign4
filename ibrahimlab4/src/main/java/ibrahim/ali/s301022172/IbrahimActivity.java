@@ -75,8 +75,8 @@ public class IbrahimActivity extends AppCompatActivity {
         testFab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-//                intent = new Intent(IbrahimActivity.this, AliAddPatientActivity.class);
-//                startActivity(intent);
+                intent = new Intent(IbrahimActivity.this, AliAddTestsActivity.class);
+                startActivity(intent);
             }
         });
     }
