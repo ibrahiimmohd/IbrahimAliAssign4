@@ -1,9 +1,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".AliAddTestsActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg3"
+    tools:context=".AliAddTestsActivity">
 
     <Spinner
         android:id="@+id/ibrahimPatientSpinner"
@@ -102,12 +103,14 @@ tools:context=".AliAddTestsActivity">
             android:id="@+id/ibrahimPositiveRadioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/RadioDisplayIbrahim"
             android:text="@string/ibrahimStrPositive" />
 
         <RadioButton
             android:id="@+id/ibrahimNegativeRadioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/RadioDisplayIbrahim"
             android:text="@string/ibrahimStrNegative" />
     </RadioGroup>
 

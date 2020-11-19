@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg2"
     tools:context=".AliAddTestActivity">
 
     <TextView
@@ -131,12 +132,14 @@
             android:id="@+id/ibrahimPositiveRadioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/RadioDisplayIbrahim"
             android:text="@string/ibrahimStrPositive" />
 
         <RadioButton
             android:id="@+id/ibrahimNegativeRadioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/RadioDisplayIbrahim"
             android:text="@string/ibrahimStrNegative" />
     </RadioGroup>
 

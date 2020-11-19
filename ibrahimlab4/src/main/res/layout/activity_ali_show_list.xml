@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg5"
     tools:context=".AliPatientListActivity">
 
     <LinearLayout
@@ -19,9 +20,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
             android:text="@string/ibrahimStrPList"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:textStyle="bold"/>
+            style="@style/TxtDisplayIbrahim"/>
     </LinearLayout>
 
 </ScrollView>

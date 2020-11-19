@@ -8,15 +8,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#83E4E1</color>
-
     <color name="btnColor">#004979</color>
     <color name="fabTestColor">#50E3C2</color>
     <color name="fabAddPatientColor">#F5A623</color>
-
-
-    <color name="bgColorIbrahimActivity">#F0F8FF</color>
-
     <color name="grey_20">#cccccc</color>
     <color name="grey_80">#37474F</color>
+
+
+
+    <color name="bg1">#E9967A</color>
+    <color name="bg2">#E8DAEF</color>
+    <color name="bg3">#7DCEA0</color>
+    <color name="bg4">#FFC300</color>
+    <color name="bg5">#EDBB99</color>
+    <color name="bg6">#FCF3CF</color>
+    <color name="bg7">#F9EBEA</color>
 
 </resources>
