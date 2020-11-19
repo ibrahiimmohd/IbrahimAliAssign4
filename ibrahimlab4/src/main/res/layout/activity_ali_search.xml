@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AliSearchActivity">
+
+    <TextView
+        android:id="@+id/ibrahimPatientNShow"
+        android:layout_width="105dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="164dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimPNameTv"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimPIdShow" />
+
+    <Button
+        android:id="@+id/ibrahimSearchPatientIdBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:onClick="showPatient"
+        android:text="Search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimSearchIdInsert" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Search By Patient Id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ibrahimSearchIdInsert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/ibrahimPIdTv"
+        android:layout_width="63dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="40dp"
+        android:text="ID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimSearchPatientIdBtn" />
+
+    <TextView
+        android:id="@+id/ibrahimPNameTv"
+        android:layout_width="55dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="24dp"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimPIdTv" />
+
+    <TextView
+        android:id="@+id/ibrahimPGenderTv"
+        android:layout_width="67dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="24dp"
+        android:text="Gender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimPNameTv" />
+
+    <TextView
+        android:id="@+id/ibrahimPatientDepTv"
+        android:layout_width="108dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="36dp"
+        android:text="department"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimPGenderTv"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ibrahimPIdShow"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.346"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimPIdTv"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimSearchPatientIdBtn" />
+
+    <TextView
+        android:id="@+id/ibrahimPGenderShow"
+        android:layout_width="112dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="156dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.989"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimPGenderTv"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimPatientNShow" />
+
+    <TextView
+        android:id="@+id/ibrahimPatientDeparShow"
+        android:layout_width="142dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="124dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toEndOf="@+id/ibrahimPatientDepTv"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimPGenderShow"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

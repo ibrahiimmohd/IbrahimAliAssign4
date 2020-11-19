@@ -18,22 +18,22 @@ tools:context=".AliAddTestsActivity">
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-    android:id="@+id/ibrahimRRTV"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="24dp"
-    android:text="Respiratory Rate"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/ibrahimHRTv" />
+        android:id="@+id/ibrahimRRTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Respiratory Rate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimHRTv" />
 
-<TextView
-    android:id="@+id/ibrahimHRTv"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="28dp"
-    android:text="Heart Rate"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/ibrahimBPTV" />
+    <TextView
+        android:id="@+id/ibrahimHRTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Heart Rate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibrahimBPTV" />
 
     <TextView
         android:id="@+id/ibrahimDateCreatedTv"

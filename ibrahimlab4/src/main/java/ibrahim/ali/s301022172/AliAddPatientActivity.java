@@ -113,34 +113,5 @@ public class AliAddPatientActivity extends AppCompatActivity implements AdapterV
         return super.onOptionsItemSelected(item);
     }
 
-    public void showPatient(View view)
-    {
-        try {
-            Patients patients = patientManager.getPatientById(txtId.getText().toString(), "patientId");
-            txtPatientName.setText(patients.getPatientName());
-            if (patients.getPatientGender() == 1) {
-                txtPatientGenderM.setChecked(true);
-            }
-            if (patients.getPatientGender() == 2) {
-                txtPatientGenderF.setChecked(true);
-            }
-            txtPatientDepartment.setSelection(getIndex(txtPatientDepartment, patients.getPatientDepartment()));
-        }
-        catch (Exception exception)
-        {
-            Toast.makeText(AliAddPatientActivity.this,
-                    exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("Error: ",exception.getMessage());
-        }
-    }
 
-    //private method of your class
-    private int getIndex(Spinner spinner, String myString){
-        for (int i=0;i<spinner.getCount();i++){
-            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
-                return i;
-            }
-        }
-        return 0;
-    }
 }

@@ -144,8 +144,8 @@ public class IbrahimActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.search) {
-            Toast.makeText(getApplicationContext(), "Search", Toast.LENGTH_LONG).show();
-            return true;
+            intent = new Intent(this, AliSearchActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
